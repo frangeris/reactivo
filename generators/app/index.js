@@ -38,10 +38,23 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    // Normal files
     this.fs.copyTpl(
       this.templatePath(),
       this.destinationPath(),
       this.props
+    );
+
+    // Hidden files
+    this.fs.copy(
+      this.templatePath('.*'),
+      this.destinationPath()
+    );
+
+    // Migrate .env vars
+    this.fs.copy(
+      this.templatePath('.env.js.example'),
+      this.destinationPath('.env.js')
     );
   }
 
