@@ -6,13 +6,13 @@ import store from '@store'
 export default Actions.create(
   <Scene
     key="root"
-    component={ connect((state) => ({ state: state.user }))(Switch) }
-    selector={ props => props.logged ? 'auth' : 'anon' }
+    component={connect((state) => ({ state: state.user }))(Switch)}
+    selector={props => props.logged ? 'auth' : 'anon'}
     tabs
     unmountScenes
   >
     <Scene key="anon" hideNavBar>
-      {/* <Scene key="onboard" component={Onboard} /> */}
+      <Scene key="onboard" component={require('@components/views/onboard')} />
     </Scene>
     <Scene key="auth" showNavigationBar>
       {/* <Scene key="home" component={Home} type='reset' initial /> */}
