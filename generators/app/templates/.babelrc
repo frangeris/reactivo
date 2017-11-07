@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "react",
+    "react-native"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "cwd": "babelrc",
+        "root": "./src",
+        "alias": {
+          "@": "./",
+          "@assets": "./src/assets",
+          "@components": "./src/components",
+          "@kit": "./src/components/kit",
+          "@config": "./src/config",
+          "@helpers": "./src/helpers",
+          "@store": "./src/store"
+        }
+      }
+    ]
+  ]
+}
