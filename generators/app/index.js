@@ -65,13 +65,11 @@ module.exports = class extends Generator {
       this.installDependencies({
         bower: false,
         callback: () => {
-          // create cross index
-          let platforms = ['ios', 'android']
-          platforms.forEach(platform => {
-            this.fs.copy('index.js', this.destinationPath(`index.${platform}.js`))
-          })
-
           this._initRN()
+
+          // replace files app.js, .babelrc, rn overwrite file
+          fs.writeFileSync(this.destinationPath('App.js'), fs.readFileSync(path.resolve(__dirname, '_App.js')))
+          fs.writeFileSync(this.destinationPath('.babelrc'), fs.readFileSync(path.resolve(__dirname, '_babelrc')))
         }
       })
     }
@@ -83,8 +81,5 @@ module.exports = class extends Generator {
       this.destinationRoot(),
       this.props.name
     ])
-
-    // end up removing index
-    this.fs.delete(this.destinationRoot('index.js'))
   }
 }

@@ -1,8 +1,5 @@
 {
-  "presets": [
-    "react",
-    "react-native"
-  ],
+  "presets": ["react-native"],
   "plugins": [
     [
       "module-resolver",

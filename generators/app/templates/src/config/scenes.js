@@ -1,21 +1,23 @@
 import React from 'react'
-import { Actions, Scene, Switch } from 'react-native-router-flux'
+import { Actions, Scene, Stack } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import store from '@store'
+
+// views
+import login from '@components/views/login'
+import home from '@components/views/home'
 
 export default Actions.create(
   <Scene
     key="root"
-    component={connect((state) => ({ state: state.user }))(Switch)}
     selector={props => props.logged ? 'auth' : 'anon'}
-    tabs
     unmountScenes
   >
     <Scene key="anon" hideNavBar>
-      <Scene key="onboard" component={require('@components/views/onboard')} />
+      <Scene key="login" component={login} />
     </Scene>
     <Scene key="auth" showNavigationBar>
-      {/* <Scene key="home" component={Home} type='reset' initial /> */}
+      <Scene key="home" component={home} type='reset' initial />
     </Scene>
   </Scene>
 )
